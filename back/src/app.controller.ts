@@ -20,10 +20,6 @@ export class AppController {
 
   @Post('payments/cancel')
   async paymentCancel(@Body() data: PaymentCancel): Promise<any> {
-    try {
-      return this.appService.paymentCancel({ data });
-    } catch (err) {
-      throw new Error('dd');
-    }
+    return this.appService.paymentCancel({ data });
   }
 }
