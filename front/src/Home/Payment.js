@@ -17,14 +17,14 @@ const Payment = () => {
 
   const onClickPayment = () => {
     const { IMP } = window;
-    IMP.init("imp55161168");
+    IMP.init("imp70001852");
     const data = {
       pg: "html5_inicis",
       pay_method: "card",
-      merchant_uid: "ORD20180131-0000001",
-      name: "마스크",
+      merchant_uid: "ORD20180131-0000183",
+      name: "마스크q3",
       amount: 100,
-      buyer_email: "exam@gmail.com",
+      buyer_email: "dfasfasdf33332413s@gmail.com",
       buyer_name: "황시우",
       buyer_tel: "010-1234-5678",
       buyer_addr: "서울특별시 강남구 압구정동",
@@ -41,8 +41,9 @@ const Payment = () => {
         method: "post",
         headers: { "Content-Type": "application/json" },
         data: {
-          imp_uid,
-          merchant_uid,
+          impUid:imp_uid,
+          merchantUid:merchant_uid,
+          count:10
         },
       }).then(() => {
         alert(`결제를 성공하였습니다.`);

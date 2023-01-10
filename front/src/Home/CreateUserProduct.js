@@ -8,14 +8,9 @@ const CreateUserProduct = () => {
       method: "post",
       headers: { "Content-Type": "application/json" },
       data: {
-        merchant_uid: "ORD20180131-0000001",
-        name: "마스크",
+        merchantUid: "ORD20180131-0000183",
+        name: "마스크q3",
         amount: 100,
-        buyer_email: "exam@gmail.com",
-        buyer_name: "황시우",
-        buyer_tel: "010-1234-5678",
-        buyer_addr: "서울특별시 강남구 압구정동",
-        buyer_postcode: "00001",
       },
     });
   };

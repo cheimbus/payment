@@ -1,4 +1,5 @@
 export interface PaymentCompleteDto {
-  imp_uid: string;
-  merchant_uid: string;
+  impUid: string;
+  merchantUid: string;
+  count: number;
 }

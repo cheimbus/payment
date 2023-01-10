@@ -4,42 +4,32 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios';
-import { Order } from './entitis/Order';
 import { Payment } from './entitis/Payment';
+import { Membership } from './entitis/Membership';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forFeature([Order, Payment]),
+    TypeOrmModule.forFeature([Payment, Membership]),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
         return {
-          type: 'mysql',
-          host:
-            configService.get('TEST') === 'true'
-              ? configService.get('TEST_HOST')
-              : configService.get('HOST'),
+          type: 'postgres',
+          host: 'localhost',
           port:
-            configService.get('TEST') === 'true'
-              ? configService.get('TEST_DB_PORT')
-              : configService.get('DB_PORT'),
+            5433,
           username:
-            configService.get('TEST') === 'true'
-              ? configService.get('TEST_USER_NAME')
-              : configService.get('USER_NAME'),
+            'postgres',
           password:
-            configService.get('TEST') === 'true'
-              ? configService.get('TEST_PASSWORD')
-              : configService.get('PASSWORD'),
+            '123123123',
           database:
-            configService.get('TEST') === 'true'
-              ? configService.get('TEST_DATABASE')
-              : configService.get('DATABASE'),
-          entities: [Order, Payment],
+            'exam',
+          entities: [Payment, Membership],
           charset: 'utf8mb4',
           synchronize: false,
           autoLoadEntities: true,
           logging: true,
+          keepConnectionAlive: true,
         };
       },
     }),
@@ -48,4 +38,4 @@ import { Payment } from './entitis/Payment';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

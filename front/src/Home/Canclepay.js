@@ -10,9 +10,9 @@ const CanclePay = () => {
         "Content-Type": "application/json",
       },
       data: {
-        merchant_uid: "ORD20180131-0000001",
-        cancel_request_amount: 100,
-        reason: "그냥",
+        merchantUid: "ORD20180131-0000183",
+        cancelRequestAmount: 10,
+        reason: '그냥'
       },
     })
       .then(() => {

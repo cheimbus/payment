@@ -6,20 +6,30 @@ import { PaymentCompleteDto } from './common/dto/payment.complete.dto';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
+  /**
+   *  아임포트 결제 시
+   */
   @Post('users')
-  async addUserAndProduct(@Body() data: AddUserAndProductDto): Promise<any> {
+  async addUserAndProduct(@Body() data: AddUserAndProductDto) {
     return this.appService.addUserAndProduct({ data });
   }
 
   @Post('payments/complete')
-  async paymentComplete(@Body() data: PaymentCompleteDto): Promise<any> {
-    return this.appService.paymentComplete({ data });
+  async paymentComplete(@Body() data: PaymentCompleteDto) {
+    return this.appService.paymentComplete(data.impUid, data.merchantUid, data.count);
   }
 
   @Post('payments/cancel')
-  async paymentCancel(@Body() data: PaymentCancel): Promise<any> {
-    return this.appService.paymentCancel({ data });
+  async paymentCancel(@Body() data: PaymentCancel) {
+    return this.appService.paymentCancel(data.merchantUid, data);
   }
+
+  /**
+   * @todo 인앱 결제 시 api
+   * POST payments/app/complete
+   * POST payments/app/cancel
+   * GET payments/app/count/
+   */
 }
